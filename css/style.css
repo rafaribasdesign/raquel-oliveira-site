@@ -1,0 +1,315 @@
+/* ==========================================================
+   Raquel Oliveira — Psicóloga Clínica
+   Mobile-first. Manrope local. Paleta do manual de marca.
+   ========================================================== */
+
+@font-face { font-family: "Manrope"; font-weight: 300; font-style: normal; font-display: swap; src: url("../assets/fonts/Manrope-Light.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 400; font-style: normal; font-display: swap; src: url("../assets/fonts/Manrope-Regular.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 500; font-style: normal; font-display: swap; src: url("../assets/fonts/Manrope-Medium.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 700; font-style: normal; font-display: swap; src: url("../assets/fonts/Manrope-Bold.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 800; font-style: normal; font-display: swap; src: url("../assets/fonts/Manrope-ExtraBold.woff2") format("woff2"); }
+
+:root {
+  --oliva: #3F4D34;
+  --oliva-claro: #BCC590;
+  --salmao: #EFB6A2;
+  --azul: #C5D7E3;
+  --creme: #FCEED4;
+
+  /* Escala tipográfica — somente 4 tamanhos */
+  --fs-1: clamp(2rem, 4.6vw, 3.5rem);        /* títulos */
+  --fs-2: clamp(1.375rem, 2.4vw, 1.875rem);  /* frases de efeito e CTAs */
+  --fs-3: clamp(1.0625rem, 1.3vw, 1.1875rem);/* texto corrido */
+  --fs-4: .9375rem;                          /* botões, rodapé, detalhes */
+
+  --header-h: 68px;
+  --gutter: 1.5rem;
+  --space-section: clamp(5rem, 11vw, 9.5rem);
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: var(--fs-3);
+  line-height: 1.7;
+  color: var(--oliva);
+  background: var(--creme);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+h1, h2, p, ul, figure { margin: 0; }
+ul { padding: 0; list-style: none; }
+strong { font-weight: 800; }
+a { color: inherit; }
+
+.container { width: 100%; max-width: 1180px; margin-inline: auto; padding-inline: var(--gutter); }
+.narrow > * { max-width: 760px; }
+.narrow > .destaque { max-width: 20em; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Foco visível */
+:focus-visible { outline: 3px solid var(--oliva); outline-offset: 4px; border-radius: 4px; }
+.hero :focus-visible, .site-footer :focus-visible, .site-header:not(.is-scrolled) :focus-visible { outline-color: var(--salmao); }
+
+.skip-link {
+  position: absolute; left: 1rem; top: -4rem; z-index: 100;
+  background: var(--creme); color: var(--oliva); padding: .75rem 1.25rem; border-radius: 999px; font-weight: 700;
+  transition: top .2s;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: .8rem 1.9rem;
+  border-radius: 999px; border: 1.5px solid var(--oliva);
+  font: 700 var(--fs-4)/1.2 "Manrope", sans-serif; letter-spacing: .01em; text-decoration: none;
+  transition: background-color .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease), transform .35s var(--ease);
+}
+.btn--dark { background: var(--oliva); color: var(--creme); margin-top: 2.5rem; }
+.btn--dark:hover { background: var(--creme); color: var(--oliva); }
+.btn--dark:active { transform: translateY(1px); }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--header-h);
+  background: transparent;
+  transition: background-color .4s var(--ease), box-shadow .4s var(--ease);
+}
+.site-header.is-scrolled { background: rgba(252, 238, 212, .94); box-shadow: 0 1px 0 rgba(63, 77, 52, .12); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.brand { display: block; position: relative; width: 112px; height: 48px; flex: none; }
+.brand img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: left center; transition: opacity .4s var(--ease); }
+.brand-verde { opacity: 0; }
+.site-header.is-scrolled .brand-creme { opacity: 0; }
+.site-header.is-scrolled .brand-verde { opacity: 1; }
+
+.btn { white-space: nowrap; }
+.btn--header { min-height: 40px; padding: .5rem .9rem; background: transparent; color: var(--creme); border-color: rgba(252, 238, 212, .6); }
+.btn--header:hover { background: var(--creme); color: var(--oliva); border-color: var(--creme); }
+.site-header.is-scrolled .btn--header { background: var(--oliva); color: var(--creme); border-color: var(--oliva); }
+.site-header.is-scrolled .btn--header:hover { background: transparent; color: var(--oliva); }
+
+/* ---------- Seções ---------- */
+.section { position: relative; padding-block: var(--space-section); overflow: hidden; }
+.section-title { font-weight: 300; font-size: var(--fs-1); line-height: 1.2; letter-spacing: -.012em; margin-bottom: 3rem; }
+
+
+/* Marca d'água */
+.watermark { position: absolute; pointer-events: none; user-select: none; z-index: 0; max-width: none; }
+
+/* ---------- 2. Hero ---------- */
+.hero {
+  position: relative; overflow: hidden;
+  min-height: 100svh; display: flex; align-items: center;
+  background: var(--oliva); color: var(--creme);
+  padding: calc(var(--header-h) + 3rem) 0 5rem;
+}
+.watermark--hero { width: 120vw; right: -48%; bottom: -14%; transform: translateY(var(--py, 0px)) rotate(-8deg); opacity: .07; animation: marca-in 2.8s var(--ease) both; }
+.hero-inner { position: relative; z-index: 1; }
+.hero-title { font-weight: 300; font-size: var(--fs-1); line-height: 1.15; letter-spacing: -.015em; max-width: 19em; }
+.hero-inner { display: grid; gap: clamp(2.5rem, 6vw, 4rem); align-items: center; }
+
+/* Sequência de papéis: cada linha é uma "máscara" que a mulher aprendeu a vestir */
+.papeis { border-bottom: 1px solid rgba(252, 238, 212, .22); }
+.papeis li {
+  display: flex; align-items: baseline; gap: .9rem;
+  padding: .85rem 0; border-top: 1px solid rgba(252, 238, 212, .22);
+  font-size: var(--fs-2); font-weight: 300; line-height: 1.25; letter-spacing: -.01em; color: var(--creme);
+}
+.papeis strong { font-weight: 800; }
+
+/* Virada: o que se diz "sim" por fora e "não" por dentro */
+.papeis .papel-virada { color: var(--salmao); border-top-color: var(--salmao); padding-top: 1.25rem; }
+.sim { position: relative; display: inline-block; font-weight: 300; }
+.sim::after { content: ""; position: absolute; left: -2%; right: -2%; top: 54%; height: 2px; background: var(--creme); transform: scaleX(0); transform-origin: left; transition: transform .8s var(--ease) calc(var(--d, 0s) + 1s); }
+.js .papel-virada.is-visible .sim::after { transform: scaleX(1); }
+.sim { color: rgba(252, 238, 212, .85); }
+.nao { font-weight: 300; color: var(--creme); }
+html:not(.js) .sim::after { transform: scaleX(1); }
+
+/* ---------- 3. Reflexão ---------- */
+/* 3a. Pergunta */
+.section--pergunta { background: var(--creme); padding-block: clamp(4.5rem, 9vw, 7.5rem); }
+.lead { font-size: var(--fs-2); font-weight: 300; line-height: 1.45; max-width: 30em; }
+/* 3b. Destaque (azul suave) */
+.section--voz { background: var(--azul); }
+.destaque { font-size: var(--fs-1); font-weight: 300; line-height: 1.15; letter-spacing: -.015em; max-width: 16em; }
+.destaque strong { font-weight: 800; }
+
+/* ---------- 4. Psicoterapia ---------- */
+.section--terapia { background: var(--creme); }
+.terapia-grid { display: grid; gap: 2.5rem; align-items: center; }
+.retrato {
+  position: relative; width: 100%; max-width: 480px; margin-inline: auto;
+  aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: var(--oliva-claro);
+}
+.retrato-simbolo { position: absolute; width: 58%; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: .55; }
+.retrato-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.terapia-texto { display: grid; gap: 1.6rem; max-width: 65ch; }
+.terapia-texto p { font-size: var(--fs-3); }
+.terapia-texto p:first-child, .terapia-texto h2 + p { font-size: var(--fs-2); line-height: 1.55; }
+
+/* ---------- 5. O que a terapia abre ---------- */
+.section--abre { background: var(--oliva-claro); }
+.abre-lista { display: grid; gap: clamp(1rem, 2vw, 1.5rem); }
+.abre-lista li { padding-top: clamp(1rem, 2vw, 1.5rem); border-top: 1px solid rgba(63, 77, 52, .3); font-size: var(--fs-1); font-weight: 300; line-height: 1.2; letter-spacing: -.012em; }
+
+/* ---------- 6. Convite ---------- */
+.section--convite { background: var(--salmao); }
+.watermark--convite { width: min(90vw, 520px); left: -22%; bottom: -26%; opacity: .1; transform: translateY(var(--py, 0px)); }
+.convite-titulo { font-weight: 300; font-size: var(--fs-1); line-height: 1.2; letter-spacing: -.012em; margin-bottom: 2.5rem; }
+.section--convite p:not(.fechamento) { font-size: var(--fs-3); max-width: 56ch; }
+.section--convite p + p { margin-top: 1.5rem; }
+.fechamento { margin-top: 3.5rem; font-size: var(--fs-2); font-weight: 700; }
+.section--convite .btn--dark { margin-top: 1.75rem; }
+
+/* ---------- 7. Formações ---------- */
+.section--formacoes { background: var(--creme); }
+.formacoes-lista { display: grid; gap: 2.25rem 3rem; }
+.formacoes-lista li, .atendimento-lista li { display: flex; gap: 1.25rem; align-items: flex-start; font-size: var(--fs-3); line-height: 1.55; }
+.formacoes-lista li { border-top: 1px solid rgba(63, 77, 52, .22); padding-top: 1.5rem; }
+.icone { flex: none; width: 36px; height: 36px; fill: none; stroke: var(--oliva); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; margin-top: .1rem; }
+
+/* ---------- 8. Atendimento ---------- */
+.section--atendimento { background: var(--azul); }
+.atendimento-lista { display: grid; gap: 1.75rem; }
+.atendimento-lista li { font-size: var(--fs-2); }
+.atendimento-lista .icone { width: 40px; height: 40px; }
+
+/* ---------- 9. Rodapé ---------- */
+.site-footer { background: var(--oliva); color: var(--creme); padding: 2.25rem 0 4.75rem; }
+.footer-inner { display: grid; gap: 1.25rem; }
+.footer-logo { width: min(220px, 70%); height: auto; }
+.footer-contato { display: grid; gap: .9rem; }
+.footer-redes { display: flex; flex-wrap: wrap; gap: .6rem; }
+.btn--outline { gap: .55rem; padding-inline: 1.3rem; min-height: 42px; padding-block: .5rem; background: transparent; color: var(--creme); border-color: rgba(252, 238, 212, .55); }
+.btn--outline:hover { background: var(--creme); color: var(--oliva); border-color: var(--creme); }
+.btn--outline svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.btn--outline svg circle[r=".6"] { fill: currentColor; }
+.footer-local { font-size: var(--fs-4); font-weight: 300; line-height: 1.4; }
+.footer-base { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(252, 238, 212, .2); display: grid; gap: .15rem; font-size: var(--fs-4); line-height: 1.5; }
+.footer-base a { text-decoration: none; border-bottom: 1px solid rgba(252, 238, 212, .4); }
+.footer-base a:hover { border-bottom-color: var(--creme); }
+
+/* ---------- WhatsApp flutuante (só mobile) ---------- */
+.wa-float {
+  position: fixed; right: 1rem; bottom: 1rem; z-index: 60;
+  width: 52px; height: 52px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--oliva); color: var(--creme);
+  box-shadow: 0 6px 20px rgba(63, 77, 52, .3), 0 0 0 2px var(--creme);
+  transition: transform .3s var(--ease);
+}
+.wa-float:hover { transform: translateY(-2px); }
+.wa-float svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- Animações de revelação ---------- */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease); transition-delay: var(--d, 0s); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .btn, .wa-float, .site-header, .brand img, .sim::after { transition: none; }
+  .sim::after { transform: scaleX(1); }
+}
+
+/* ---------- Tablet ---------- */
+@media (min-width: 768px) {
+  :root { --gutter: 2.5rem; --header-h: 80px; }
+  .brand { width: 140px; height: 56px; }
+  .btn--header { min-height: 46px; padding: .7rem 1.5rem; }
+  .watermark--hero { width: 720px; right: -18%; top: 50%; bottom: auto; transform: translateY(calc(-50% + var(--py, 0px))) rotate(-8deg); opacity: .08; }
+  .terapia-grid { grid-template-columns: .85fr 1.15fr; gap: 5rem; }
+  .retrato { margin: 0; }
+  .formacoes-lista { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr auto; align-items: end; }
+  .footer-contato { justify-items: end; }
+  .footer-base { grid-template-columns: 1fr auto; }
+  .site-footer { padding: 4rem 0; }
+  .footer-logo { width: 280px; }
+  .footer-inner { gap: 2.5rem; }
+  .footer-base { margin-top: 3rem; padding-top: 1.5rem; }
+  .wa-float { display: none; }
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 1024px) {
+  .hero-inner { grid-template-columns: 1.15fr 1fr; gap: 5rem; }
+}
+@media (min-width: 1200px) {
+  .watermark--hero { right: -6%; width: 920px; }
+  .watermark--convite { left: -8%; }
+}
+
+
+/* ==========================================================
+   Efeitos e transições
+   ========================================================== */
+@keyframes marca-in { from { opacity: 0; } }
+
+/* Barra de progresso de leitura */
+.progress { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: var(--salmao); transform: scaleX(var(--p, 0)); transform-origin: left; }
+.site-header.is-scrolled .progress { background: var(--oliva); }
+
+/* Fios que se desenham ao revelar */
+.papeis li, .abre-lista li, .formacoes-lista li { position: relative; border-top: 0; }
+.papeis li::before, .abre-lista li::before, .formacoes-lista li::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line, currentColor); opacity: .3;
+  transform-origin: left; transition: transform 1.4s var(--ease) var(--d, 0s);
+}
+.papeis li { --line: var(--creme); }
+.papeis .papel-virada { --line: var(--salmao); }
+.papeis .papel-virada::before { opacity: .9; }
+.abre-lista li, .formacoes-lista li { --line: var(--oliva); }
+.js .papeis li::before, .js .abre-lista li::before, .js .formacoes-lista li::before { transform: scaleX(0); }
+.js .papeis li.is-visible::before, .js .abre-lista li.is-visible::before, .js .formacoes-lista li.is-visible::before { transform: scaleX(1); }
+
+/* Palavras que sobem de uma máscara (títulos e frases de impacto) */
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; }
+.wi { display: inline-block; }
+.js .split.reveal { opacity: 1; transform: none; }
+.js .split .wi { transform: translateY(110%); transition: transform 1.1s var(--ease); transition-delay: calc(var(--d, 0s) + var(--i) * 55ms); }
+.js .split.is-visible .wi { transform: none; }
+
+/* Ícones de linha que se desenham */
+.js .icone * { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s var(--ease) calc(var(--d, 0s) + .25s); }
+.js .is-visible .icone * { stroke-dashoffset: 0; }
+
+/* Foto: cortina creme que se recolhe + assentamento suave */
+.js .retrato.reveal { opacity: 1; transform: none; }
+.retrato::after { content: ""; position: absolute; inset: -1px; z-index: 2; background: var(--creme); transform-origin: top; transform: scaleY(0); pointer-events: none; }
+.js .retrato::after { transform: scaleY(1); transition: transform 1.6s var(--ease); }
+.js .retrato.is-visible::after { transform: scaleY(0); }
+.retrato-foto { transform: scale(1.12); transition: transform 2.4s var(--ease); }
+.retrato.is-visible .retrato-foto { transform: scale(1); }
+html:not(.js) .retrato-foto { transform: none; }
+
+/* Botões: elevação suave e sombra */
+.btn { transition: background-color .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease), transform .35s var(--ease), box-shadow .35s var(--ease); }
+.btn--dark:hover, .btn--outline:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(63, 77, 52, .5); }
+.btn--outline:hover { box-shadow: 0 10px 24px -12px rgba(0, 0, 0, .45); }
+
+/* Marca d'água: entrada lenta e leve rotação ao rolar */
+.watermark { will-change: transform; }
+
+@media (prefers-reduced-motion: reduce) {
+  .watermark--hero { animation: none; }
+  .progress { display: none; }
+  .papeis li::before, .abre-lista li::before, .formacoes-lista li::before { transition: none; }
+  .js .papeis li::before, .js .abre-lista li::before, .js .formacoes-lista li::before { transform: scaleX(1); }
+  .js .split .wi { transform: none; transition: none; }
+  .js .icone * { stroke-dashoffset: 0; transition: none; }
+  .js .retrato::after { transform: scaleY(0); transition: none; }
+  .retrato-foto { transform: none; transition: none; }
+  .btn--dark:hover, .btn--outline:hover { transform: none; }
+}
+
+.footer-local a { text-decoration: none; border-bottom: 1px solid rgba(252, 238, 212, .4); overflow-wrap: anywhere; }
+.footer-local a:hover { border-bottom-color: var(--creme); }
